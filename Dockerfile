@@ -15,7 +15,7 @@ FROM debian:bullseye-slim as deploy
 
 RUN apt-get update
 
-COPY --from=deploy-builder /app/app .
+COPY --from=deploy-builder /app .
 
 CMD ["./app"]
 
