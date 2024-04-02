@@ -27,5 +27,3 @@ test: ## 테스트 실행
 help: ## 욥션 보기
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
-# make 파일 너무 좋잖아?!

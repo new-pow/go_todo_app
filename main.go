@@ -7,7 +7,9 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"time"
 
+	// 동작 확인을 위해
 	"golang.org/x/sync/errgroup"
 
 	"github.com/new-pow/go_todo_app/config"
@@ -21,6 +23,8 @@ func main() {
 }
 
 func run(ctx context.Context) error {
+	// ctx, stop := signal.NotifyContext(ctx, syscall.SIGINT, syscall.SIGTERM) // os.Interrupt 대신 syscall.SIGINT 사용
+	// defer stop()                                                            // defer로 시그널이 들어오면 stop
 	cfg, err := config.New() // config 생성
 	if err != nil {
 		return err
@@ -32,8 +36,9 @@ func run(ctx context.Context) error {
 	url := fmt.Sprintf("http://%s", l.Addr().String())
 	log.Printf("server listening at %s", url)
 	s := &http.Server{
-		Addr: ":18080",
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			// 명령 줄에서 테스트 하기 위한 로직
+			time.Sleep(5 * time.Second)
 			fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
 		}),
 	}
