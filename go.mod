@@ -1,4 +1,4 @@
-module web-server
+module github.com/new-pow/go_todo_app
 
 go 1.22.1
 
