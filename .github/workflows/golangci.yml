@@ -6,6 +6,10 @@ on:
       - .github/workflows/golangci.yml
 jobs:
   golangci-lint:
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: read
     name: golangci-lint
     runs-on: ubuntu-latest
     steps:
