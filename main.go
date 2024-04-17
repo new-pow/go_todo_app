@@ -7,7 +7,8 @@ import (
 	"net"
 	"os"
 
-	"github.com/new-pow/go_todo_app/config"
+	// "github.com/new-pow/go_todo_app/config"
+	"go_todo_app/config"
 )
 
 func main() {
